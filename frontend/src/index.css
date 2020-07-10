@@ -14,10 +14,7 @@ body {
 }
 
 .app-container{
-  width: 550px;
-  height: 100px;
+  display: flex;
+  justify-content: center;
   margin-top: 30px;
-  background-color: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-  border-radius: 3px;
 }

@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from "react";
-// import { useObservable } from "../../hooks/useObservable";
+
 import MessagesService from "../../api/messages.service";
-import { ajax } from 'rxjs/ajax';
+
+import './chat.css';
+
 
 export const Chat = () => {
     const [ messages, useMessages ] = useState([]);
 
     useEffect(() => {
-        const sub = ajax.getJSON(`https://api.github.com/users?per_page=${10}`).subscribe( useMessages );
+        const sub = MessagesService.getMessages(useMessages);
         return () => sub.unsubscribe()
     }, []);
+
+    console.log(messages);
 
     return(
         <div className="chat-block">

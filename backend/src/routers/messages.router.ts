@@ -4,7 +4,7 @@ import { MessagesService } from '../services/messages.service';
 const router = express.Router();
 
 router.get('/', async (req: express.Request, res: express.Response ) => {
-    const messages = await MessagesService.getMessages();
+    const messages = await MessagesService.getMessages(req.query.friend || '');
 
     res.status(200).json({ messages });
 });
