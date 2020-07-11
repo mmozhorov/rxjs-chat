@@ -7,6 +7,7 @@ import { config } from 'dotenv';
 
 import { connectToDb } from './db/config';
 import messagesRouter from './routers/messages.router';
+import friendsRouter from './routers/friends.router';
 
 (async function main() {
     const env: any = config().parsed;
@@ -25,6 +26,7 @@ import messagesRouter from './routers/messages.router';
         })
     )
 
+    app.use('/friends', friendsRouter);
     app.use('/messages', messagesRouter);
 
     app.use('*', async (req, res, next) => {

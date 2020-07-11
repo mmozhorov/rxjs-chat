@@ -1,7 +1,8 @@
 const { config } = require('dotenv');
 const mongoose = require('mongoose');
 const messagesModel = require('./models/messages.model.ts');
-const { messages } = require('./db/messages.json');
+const friendsModel = require('./models/friends.model.ts');
+const { messages, friends } = require('./db/messages.json');
 
 (async function migrate() {
     try {
@@ -12,7 +13,9 @@ const { messages } = require('./db/messages.json');
             useUnifiedTopology: true
         });
         await messagesModel.deleteMany();
+        await friendsModel.deleteMany();
         await messagesModel.insertMany(messages);
+        await friendsModel.insertMany(friends);
 
         console.info('successful migration');
     }

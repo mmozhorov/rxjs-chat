@@ -1,4 +1,17 @@
 {
+  "friends": [
+    {
+      "name": "Joseph",
+      "photo": "https://www.verwin.com/assets/images/user-avatar.png"
+    },
+    {
+      "name": "Bogdan"
+    },
+    {
+      "name": "Robert",
+      "photo": "https://p7.hiclipart.com/preview/102/425/178/computer-icons-user-male-clip-art-why.jpg"
+    }
+  ],
   "messages": [
     {
       "friend": "Joseph",
