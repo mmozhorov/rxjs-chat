@@ -1,12 +1,12 @@
 import * as express from 'express';
-import { MessagesService } from '../services/messages.service';
+import { FriendsService } from '../services/friends.service';
 
 const router = express.Router();
 
 router.get('/', async (req: express.Request, res: express.Response ) => {
-    const messages = await MessagesService.getMessages(req.query.friend || '');
+    const friends = await FriendsService.getAllFriends();
 
-    res.status(200).json({ messages });
+    res.status(200).json({ friends });
 });
 
 export default router;

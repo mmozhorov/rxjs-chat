@@ -13,8 +13,6 @@ export const Chat = () => {
         return () => sub.unsubscribe()
     }, []);
 
-    console.log(messages);
-
     return(
         <div className="chat-block">
         </div>

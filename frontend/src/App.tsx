@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 
-import {Chat} from "./components/Chat";
-import {Friends} from "./components/Friends";
+import { Chat } from "./components/Chat";
+import { Friends } from "./components/Friends";
 
 const store = createStore(
     reducer,

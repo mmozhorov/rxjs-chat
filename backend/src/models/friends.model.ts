@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose = require('mongoose');
+
 
 const friendsSchema = new mongoose.Schema({
     name: { type: String, isRequired: true },
