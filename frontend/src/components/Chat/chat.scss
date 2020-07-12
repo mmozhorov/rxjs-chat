@@ -1,0 +1,31 @@
+.chat-block{
+    width: 550px;
+    height: auto;
+    border-radius: 3px;
+    padding: 20px;
+    background-color: white;
+
+    &__message{
+        display: flex;
+        padding: 10px 30px;
+
+        & > span{
+            border-radius: 3px;
+            padding: 7px;
+            background-color: #c0ffd2;
+            box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        }
+
+        &__time{
+            font-size: 0.7em;
+            padding: 10px 0 0 13px;
+        }
+
+        &--own {
+            justify-content: flex-end;
+            & > span {
+                background-color: #dafdff;
+            }
+        }
+    }
+}

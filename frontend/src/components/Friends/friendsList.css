@@ -5,5 +5,20 @@
     border-radius: 3px;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0,0,0,0.4);
-    padding: 15px 20px;
+    padding: 15px 0;
+}
+
+.friends-block .friends-block__element{
+    color: rgb(42, 88, 133);
+    padding: 3px 20px;
+    cursor: pointer;
+}
+
+.friends-block .friends-block__element:hover{
+    background-color: #dfe6ed;
+}
+
+.friends-block .friends-block__element--active{
+    color: #000;
+    background-color: #dfe6ed;
 }

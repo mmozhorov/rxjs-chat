@@ -1,20 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
-import MessagesService from "../../api/messages.service";
+import { useMessages } from "../../hooks/useMessages";
 
-import './chat.css';
+import { Message } from "./message.component";
+import { MessageInputComponent } from "./message-input.component";
+
+import './chat.scss';
 
 
 export const Chat = () => {
-    const [ messages, useMessages ] = useState([]);
-
-    useEffect(() => {
-        const sub = MessagesService.getMessages(useMessages);
-        return () => sub.unsubscribe()
-    }, []);
+    const [ messages, dispatchMessages ] = useMessages();
 
     return(
-        <div className="chat-block">
+        <div className="messages-block">
+            <div className="chat-block">
+                { messages.map( ( message, i ) => <Message key={i} element={message} />) }
+            </div>
+            <MessageInputComponent/>
         </div>
     )
-}
+};

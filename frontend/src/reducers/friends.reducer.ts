@@ -4,7 +4,7 @@ const initialState = {
     friends: [],
     isLoading: false,
     error: null
-}
+};
 
 export default ( state = initialState, action: any ) => {
     switch (action.type) {

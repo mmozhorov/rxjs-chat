@@ -7,11 +7,15 @@ import { baseUrl } from "../constants/urls";
 
 
 export default class FriendsService {
-    private static messagesUrl: string = '/friends';
+    private static friendsUrl: string = '/friends';
 
-    public static getAllFriends = ( resolveFn, rejectFn, finallyFn ) => ajax.getJSON(`${baseUrl}${FriendsService.messagesUrl}`)
-        .pipe(
-            map( (data: any ) => data.friends )
-        )
-        .subscribe( resolveFn, rejectFn, finallyFn );
+    public static getAllFriends = () => {
+        const requestUrl = `${baseUrl}${FriendsService.friendsUrl}`;
+
+        return ( resolveFn, rejectFn, finallyFn ) => ajax.getJSON(requestUrl)
+            .pipe(
+                map( (data: any ) => data.friends )
+            )
+            .subscribe( resolveFn, rejectFn, finallyFn );
+    }
 }
