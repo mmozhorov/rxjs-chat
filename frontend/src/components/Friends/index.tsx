@@ -29,10 +29,14 @@ export const Friends = (  ) => {
     useEffect(() => {
         dispatchFriends(getFriendsListRequest());
 
-        const sub = FriendsService.getAllFriends()(
+        const sub$ = FriendsService.getAllFriends('')
+            .pipe(
+                map( (data: any) => data.friends )
+            )
+            .subscribe(
             ( friends ) => dispatchFriends(getFriendsListSuccess(friends)),
             ( error ) => dispatchFriends(getFriendsListFailed(error)),
-            () => sub.unsubscribe()
+            () => sub$.unsubscribe()
         );
     }, []);
 

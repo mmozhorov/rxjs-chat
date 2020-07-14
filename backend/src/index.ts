@@ -6,6 +6,9 @@ import { config } from 'dotenv';
 
 import { connectToDb } from './db/config';
 
+import { authorization } from './auth/authorization.middleware';
+
+import userRouter from './routers/user.router';
 import messagesRouter from './routers/messages.router';
 import friendsRouter from './routers/friends.router';
 
@@ -21,7 +24,9 @@ import friendsRouter from './routers/friends.router';
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use('/login', require('./auth').authenticate);
+    app.use('/user', userRouter);
+
+    app.use(authorization);
 
     app.use('/friends', friendsRouter);
     app.use('/messages', messagesRouter);

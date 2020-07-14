@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
-import { baseUrl } from "../constants/urls";
+import {baseHeaders, baseUrl} from "../constants/urls";
 
 export default class MessagesService {
     private static messagesUrl: string = `${baseUrl}/messages`;
@@ -15,7 +15,11 @@ export default class MessagesService {
 
     public static postFriendMessage = ( friend, message ) =>
         Observable.create( ( observer ) => {
-            axios.post(MessagesService.messagesUrl, { friend, message })
+            axios.post(MessagesService.messagesUrl, { friend, message }, {
+                headers: {
+                    ...baseHeaders
+                }
+            })
                 .then( response => {
                     observer.next(response);
                     observer.complete();

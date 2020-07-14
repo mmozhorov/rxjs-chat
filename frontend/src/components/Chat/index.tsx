@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { map } from "rxjs/operators";
 
 import { useMessages } from "../../hooks/useMessages";
 
 import { Message } from "./message.component";
 import { MessageInputComponent } from "./message-input.component";
 
-import './chat.scss';
 import MessagesService from "../../api/messages.service";
-import {map} from "rxjs/operators";
+
+import './chat.scss';
 
 
 export const Chat = () => {

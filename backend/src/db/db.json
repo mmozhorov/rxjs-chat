@@ -3,16 +3,22 @@
     {
       "id": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
       "name": "Joseph",
-      "photo": "https://www.verwin.com/assets/images/user-avatar.png"
+      "photo": "https://www.verwin.com/assets/images/user-avatar.png",
+      "username": "joseph1991",
+      "password": "qwerty"
     },
     {
       "id": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
-      "name": "Bogdan"
+      "name": "Bogdan",
+      "username": "bogdan1",
+      "password": "1234"
     },
     {
       "id": "a45adfda-3ddc-4aa3-9a61-60a79850306f",
       "name": "Robert",
-      "photo": "https://p7.hiclipart.com/preview/102/425/178/computer-icons-user-male-clip-art-why.jpg"
+      "photo": "https://p7.hiclipart.com/preview/102/425/178/computer-icons-user-male-clip-art-why.jpg",
+      "username": "rb",
+      "password": "1234"
     }
   ],
   "messages": [

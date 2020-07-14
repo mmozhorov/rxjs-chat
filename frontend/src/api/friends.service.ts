@@ -1,21 +1,25 @@
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
-import { baseUrl } from "../constants/urls";
+import {baseHeaders, baseUrl} from "../constants/urls";
+import axios from "axios";
 
 
 
 export default class FriendsService {
-    private static friendsUrl: string = '/friends';
+    private static friendsUrl: string = `${baseUrl}/friends`;
 
-    public static getAllFriends = () => {
-        const requestUrl = `${baseUrl}${FriendsService.friendsUrl}`;
-
-        return ( resolveFn, rejectFn, finallyFn ) => ajax.getJSON(requestUrl)
-            .pipe(
-                map( (data: any ) => data.friends )
-            )
-            .subscribe( resolveFn, rejectFn, finallyFn );
-    }
+    public static getAllFriends = (userId: string) =>
+        Observable.create( async ( observer ) => {
+            const response = await axios.get(`${FriendsService.friendsUrl}?userId=${userId}`, {
+                    headers: {
+                        ...baseHeaders
+                    }
+                });
+            observer.next( response );
+            observer.complete();
+        });
 }
+
+
