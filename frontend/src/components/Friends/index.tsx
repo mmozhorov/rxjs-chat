@@ -9,7 +9,13 @@ import { useMessages } from "../../hooks/useMessages";
 
 import './friendsList.css';
 import MessagesService from "../../api/messages.service";
-import {getMessageListFailed, getMessageListSuccess} from "../../actions/chat.actions";
+import {
+    getMessageListFailed,
+    getMessageListSuccess,
+    getActiveFriend,
+    getMessageListRequest
+} from "../../actions/chat.actions";
+import {map} from "rxjs/operators";
 
 export const Friends = (  ) => {
     const [ activeFriend, setActiveFriend ] = useState('');
@@ -31,10 +37,18 @@ export const Friends = (  ) => {
     }, []);
 
     useEffect(() => {
-        const sub = MessagesService.getFriendMessages(activeFriend)(
-            messages => dispatchMessages(getMessageListSuccess(messages)),
-            error => dispatchMessages(getMessageListFailed(error)),
-            () => sub.unsubscribe()
+        dispatchMessages(getMessageListRequest());
+
+        const sub = MessagesService.getFriendMessages(activeFriend)
+            .pipe(
+                map(( data: any ) => data.messages))
+            .subscribe(
+            messages => console.log(messages),
+            error => console.log(error),
+            () => {
+                dispatchMessages(getActiveFriend(activeFriend));
+                sub.unsubscribe();
+            }
         )
     }, [activeFriend]);
 

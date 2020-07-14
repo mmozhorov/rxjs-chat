@@ -12,7 +12,7 @@ export const TextInput = ({ textInputRef }) => {
     };
 
     return (
-        <textarea ref={ textInputRef } onKeyUp={handleKeyPress} className='message-input__text-input'>
+        <textarea ref={ textInputRef } onKeyUp={handleKeyPress}  className='message-input__text-input'>
             {text}
         </textarea>
     );

@@ -1,24 +1,25 @@
+import axios from 'axios';
+import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { map, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 import { baseUrl } from "../constants/urls";
 
-
-
 export default class MessagesService {
-    private static messagesUrl: string = '/messages';
+    private static messagesUrl: string = `${baseUrl}/messages`;
 
     public static getFriendMessages = ( friend: string ) => {
-        const requestUrl = `${baseUrl}${MessagesService.messagesUrl}`;
-        const urlWithParams = `${requestUrl}?friend=${friend}`;
+        const urlWithParams = `${MessagesService.messagesUrl}?friend=${friend}`;
 
-        return ( resolveFn, rejectFn, finallyFn ) => ajax.getJSON(urlWithParams)
-            .pipe(
-                map(
-                    ( data: any ) => data.messages
-                )
-            )
-            .subscribe( resolveFn, rejectFn, finallyFn );
-    }
+        return ajax.getJSON(urlWithParams);
+    };
+
+    public static postFriendMessage = ( friend, message ) =>
+        Observable.create( ( observer ) => {
+            axios.post(MessagesService.messagesUrl, { friend, message })
+                .then( response => {
+                    observer.next(response);
+                    observer.complete();
+                })
+                .catch( observer.error )
+        });
 }

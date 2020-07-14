@@ -1,11 +1,11 @@
 import express = require('express');
 import bodyParser = require('body-parser');
-const queryParser = require('express-query-parser')
 import cors = require('cors');
 import path = require('path');
 import { config } from 'dotenv';
 
 import { connectToDb } from './db/config';
+
 import messagesRouter from './routers/messages.router';
 import friendsRouter from './routers/friends.router';
 
@@ -18,13 +18,10 @@ import friendsRouter from './routers/friends.router';
     app.use(express.static(path.join(__dirname, '../build')));
     app.use(express.static(path.join(__dirname, '../public')));
 
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(
-        queryParser({
-            parseNull: true,
-            parseBoolean: true
-        })
-    )
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+
+    app.use('/login', require('./auth').authenticate);
 
     app.use('/friends', friendsRouter);
     app.use('/messages', messagesRouter);

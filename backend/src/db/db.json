@@ -1,0 +1,50 @@
+{
+  "friends": [
+    {
+      "id": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "name": "Joseph",
+      "photo": "https://www.verwin.com/assets/images/user-avatar.png"
+    },
+    {
+      "id": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "name": "Bogdan"
+    },
+    {
+      "id": "a45adfda-3ddc-4aa3-9a61-60a79850306f",
+      "name": "Robert",
+      "photo": "https://p7.hiclipart.com/preview/102/425/178/computer-icons-user-male-clip-art-why.jpg"
+    }
+  ],
+  "messages": [
+    {
+      "owner": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "target": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "time": 1594713417,
+      "text": "Hi, friend"
+    },
+    {
+      "owner": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "target": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "time": 1594713900,
+      "text": "I just wanna ask you about our release planning meeting"
+    },
+    {
+      "owner": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "target": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "time": 1594715400,
+      "text": "How you think about appropriate time for that?"
+    },
+    {
+      "owner": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "target": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "time": 1594717500,
+      "text": "Hi, Joseph. Hm, maybe today in 15.00?"
+    },
+    {
+      "owner": "3b6d1bcb-d117-443f-8cb0-4d74774052a9",
+      "target": "de3f2ff4-7ee3-46d5-97f7-52b44179199f",
+      "time": 1594717700,
+      "text": "Yeah, sounds good"
+    }
+  ]
+}

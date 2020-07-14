@@ -1,14 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose = require('mongoose');
 
 const messagesSchema = new mongoose.Schema({
-    friend: { type: String, required: true },
-    messages: [
-        {
-            isOwn: { type: Boolean, required: true },
-            time: { type: String, required: true },
-            text: { type: String, required: true }
-        }
-    ]
+    owner: { type:String, required: true },
+    target: { type:String, required: true },
+    time: { type: Number, required: true },
+    text: { type: String, required: true }
 });
 const messagesModel = mongoose.model('messages', messagesSchema);
 
