@@ -35,6 +35,12 @@
   }
 
   &__auth-link{
-    margin-top: 20px;
+    margin-top: 33px;
+    font-size: 13px;
+
+    span{
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }
