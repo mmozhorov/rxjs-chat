@@ -10,10 +10,21 @@ export const registerUserSchema = {
 };
 
 export const loginUserSchema = {
-    type: 'object',
+    type: 'array',
     required: ['username', 'password'],
     items: {
-        username: { type: 'string', 'minLength': 3, 'maxLength': 30 },
-        password: { type: 'string', 'minLength': 6, 'maxLength': 30 }
+        "type": "object",
+        "properties": {
+            "username": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 30
+            },
+            "password": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 30
+            },
+        }
     }
 };

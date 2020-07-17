@@ -24,12 +24,12 @@ import friendsRouter from './routers/friends.router';
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use('/user', usersRouter);
+    app.use('/api/user', usersRouter);
 
     app.use(authorization);
 
-    app.use('/friends', friendsRouter);
-    app.use('/messages', messagesRouter);
+    app.use('/api/friends', friendsRouter);
+    app.use('/api/messages', messagesRouter);
 
     app.use((err, req, res, next) => {
         if (err)

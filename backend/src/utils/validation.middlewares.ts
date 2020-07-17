@@ -1,7 +1,7 @@
 import * as express from "express";
 import Ajv from 'ajv';
 
-import * as schemas from '../../../common/validation/users.schema';
+import * as schemas from '../../../frontend/src/common/validation/users.schema';
 
 const ajv = new Ajv({ allErrors: true });
 
