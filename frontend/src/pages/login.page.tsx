@@ -9,10 +9,14 @@ const ajv = new Ajv({ allErrors: true });
 
 export default class LoginPage extends React.Component{
     handleLogin = ( username, password ) => {
-        const validateFunction = ajv.compile(schemas.loginUserSchema);
-        const isValid = validateFunction([{ username, password }]);
-        console.log(validateFunction.errors);
+
     };
+
+    constructor(props){
+        super(props);
+
+        this.validateFunction = ajv.compile(schemas.loginUserSchema);
+    }
 
     render(){
         return(

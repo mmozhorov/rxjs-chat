@@ -6,12 +6,17 @@ export const LoginForm = ({ handleLogin }) => {
     const [ username, changeUsername ] = useState('');
     const [ password, changePassword ] = useState('');
 
+    const validateUsernameField = () => {
+
+    };
+
     return(
         <div className="login-form">
             <h1>Login</h1>
             <input type="text"
                    className="login-form__input"
                    onChange={({ target: { value } }) => changeUsername(value)}
+                   onBlur={}
                    placeholder="Username"
                    maxLength={30}
             />
