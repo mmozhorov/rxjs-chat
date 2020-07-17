@@ -33,9 +33,9 @@ import friendsRouter from './routers/friends.router';
 
     app.use((err, req, res, next) => {
         if (err)
-            res.status(400).json(err);
+            res.status(err.status || 400 ).json({ 'message': err.message });
         else
-            res.status(404).send('Not Found');
+            res.status(404).json({ 'message': 'Not Found' });
     });
 
     app.listen(env.APP_PORT, () => {

@@ -1,12 +1,12 @@
 const { config } = require('dotenv');
 const jwt = require('jsonwebtoken');
 
-import { FriendsService } from "../services/friends.service";
+import { UsersService } from "../services/users.service";
 
 const env = config().parsed;
 
 export const findUserAndAuthenticate = async ( { username = "", password = "" } ) => {
-    const user = await FriendsService.getUser( username , password );
+    const user = await UsersService.getUser( username , password );
 
     if (user)
         return jwt.sign({
@@ -16,5 +16,3 @@ export const findUserAndAuthenticate = async ( { username = "", password = "" } 
 
     return null;
 };
-
-export const checkIfUserExist = async ( { username = "" } ) => await FriendsService.getUser( username );

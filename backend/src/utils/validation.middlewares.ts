@@ -5,9 +5,18 @@ import * as schemas from '../../../common/validation/users.schema';
 
 const ajv = new Ajv({ allErrors: true });
 
-export const registerValidationMiddleware = (req: express.Request, res: express.Response, next) => {
-    const validateFunction = ajv.compile(schemas.registerUserSchema);
-    const isValid = validateFunction(req.body);
+const validate = ( data: any, schema: any) => {
+    const validateFunction = ajv.compile(schema);
+    const isValid = validateFunction(data);
+    return isValid ? null : validateFunction.errors;
+};
 
-    return isValid ? next() : next(validateFunction.errors);
+export const registerValidationMiddleware = (req: express.Request, res: express.Response, next) => {
+    const errors = validate(req.body, schemas.registerUserSchema);
+    return errors ? next() : next(errors);
+};
+
+export const loginValidationMiddleware = (req: express.Request, res: express.Response, next) => {
+    const errors = validate(req.body, schemas.loginUserSchema);
+    return errors ? next() : next(errors);
 };

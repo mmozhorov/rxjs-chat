@@ -5,13 +5,17 @@ const usersModel = require('../models/users.model');
 
 const EXCLUDED_FIELDS = {'_id': 0, '__v': 0};
 
-export class FriendsService{
+export class UsersService{
     static async getAllFriends(){
         return usersModel.find({ }, EXCLUDED_FIELDS);
     }
 
     static async getUser(username = "", password = ""){
         return usersModel.findOne({ username, password }, EXCLUDED_FIELDS);
+    }
+
+    static async isUserExist(username = ""){
+        return usersModel.findOne({ username }, EXCLUDED_FIELDS);
     }
 
     static async createUser(user){

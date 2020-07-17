@@ -11,7 +11,6 @@ export const registerUserSchema = {
 
 export const loginUserSchema = {
     type: 'object',
-    additionalProperties: false,
     required: ['username', 'password'],
     items: {
         username: { type: 'string', 'minLength': 3, 'maxLength': 30 },
