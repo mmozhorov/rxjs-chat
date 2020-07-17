@@ -20,7 +20,7 @@ export const App = () =>
             <Header/>
             <div className="app-container">
                 <Switch>
-                    <Route exact path="/">
+                    <Route exact path="/dialogs">
                         <HomePage/>
                     </Route>
                     <Route exact path="/login">

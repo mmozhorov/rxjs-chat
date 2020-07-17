@@ -6,11 +6,19 @@
   justify-content: center;
   align-items: center;
   &__link{
-    &__user-logo{
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
+    margin-left: 5px;
+
+    &__logo{
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      border-radius: 10px;
       border: solid 1px #000;
+
+      &:hover{
+        box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        background-color: #e3eaf1;
+      }
     }
   }
 }
