@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner'
 
 import FriendsService from "../api/friends.service";
@@ -31,7 +30,12 @@ export default class HomePage extends React.Component<any, IHomePage>{
 
     render(){
         const { isLoading } = this.state;
-        //{/*<Redirect to="/login" />*/}
-        return( { isLoading } ? <Loader type="Grid" color="#5a5e63" height={60} width={60}/>: null);
+        return( { isLoading } ?
+            <Loader type="Grid" color="#5a5e63" height={60} width={60} timeout={3000}/> :
+                <React.Fragment>
+                    <Chat/>
+                    <Friends/>
+                </React.Fragment>
+        );
     }
 };
