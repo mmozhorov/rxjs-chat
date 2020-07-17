@@ -8,9 +8,11 @@ body {
   background-color: #dfe6ed;
 }
 
-#root{
-  display: flex;
-  justify-content: center;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .app-container{

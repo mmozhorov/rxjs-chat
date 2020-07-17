@@ -1,0 +1,16 @@
+.navigation-bar{
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__link{
+    &__user-logo{
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      border: solid 1px #000;
+    }
+  }
+}

@@ -4,8 +4,7 @@ import { Provider } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 import reducer from './reducers';
@@ -13,19 +12,12 @@ import reducer from './reducers';
 import HomePage from './pages/home.page';
 import LoginPage from './pages/login.page';
 
+import { Header } from "./components/Header";
+
 export const App = () =>
     <Provider store={ createStore( reducer ) }>
         <Router>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Messages</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                </ul>
-            </nav>
+            <Header/>
             <div className="app-container">
                 <Switch>
                     <Route exact path="/">
