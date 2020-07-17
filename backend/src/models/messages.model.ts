@@ -1,4 +1,4 @@
-import mongoose = require('mongoose');
+import mongoose =  require('mongoose');
 
 const messagesSchema = new mongoose.Schema({
     owner: { type:String, required: true },
@@ -6,6 +6,5 @@ const messagesSchema = new mongoose.Schema({
     time: { type: Number, required: true },
     text: { type: String, required: true }
 });
-const messagesModel = mongoose.model('messages', messagesSchema);
 
-module.exports = messagesModel;
+module.exports = mongoose.model('messages', messagesSchema);

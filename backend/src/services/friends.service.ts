@@ -1,13 +1,33 @@
-const friendsModel = require('../models/friends.model');
+import { v4 as uuidv4 } from 'uuid';
+
+const usersModel = require('../models/users.model');
+
 
 const EXCLUDED_FIELDS = {'_id': 0, '__v': 0};
 
 export class FriendsService{
     static async getAllFriends(){
-        return friendsModel.find({ }, EXCLUDED_FIELDS);
+        return usersModel.find({ }, EXCLUDED_FIELDS);
     }
 
     static async getUser(username = "", password = ""){
-        return friendsModel.findOne({ username, password }, EXCLUDED_FIELDS);
+        return usersModel.findOne({ username, password }, EXCLUDED_FIELDS);
+    }
+
+    static async createUser(user){
+        const {
+            username = "",
+                password = "",
+                name = "",
+                photo = ""
+        } = user;
+
+        return await usersModel.create({
+            id: uuidv4(),
+            username,
+            password,
+            name,
+            photo
+        });
     }
 }

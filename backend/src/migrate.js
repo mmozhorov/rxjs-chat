@@ -2,17 +2,17 @@ const { config } = require('dotenv');
 const mongoose = require('mongoose');
 
 const messagesModel = require('./models/messages.model.ts');
-const friendsModel = require('./models/friends.model.ts');
-const { messages, friends } = require('./db/db.json');
+const usersModel  = require('./models/users.model.ts');
+const collections = require('./db/db.json');
 
 async function clearDatabase() {
     await messagesModel.deleteMany();
-    await friendsModel.deleteMany();
+    await usersModel.deleteMany();
 }
 
 async function fillDatabase() {
-    await messagesModel.insertMany(messages);
-    await friendsModel.insertMany(friends);
+    await messagesModel.insertMany( collections.messages );
+    await usersModel.insertMany( collections.users );
 }
 
 (async function migrate() {
@@ -24,8 +24,10 @@ async function fillDatabase() {
             useUnifiedTopology: true
         });
 
-        await clearDatabase();
-        await fillDatabase();
+        await Promise.all([
+            clearDatabase(),
+            fillDatabase()
+        ]);
 
         console.info('successful migration');
     }

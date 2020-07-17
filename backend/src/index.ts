@@ -8,7 +8,7 @@ import { connectToDb } from './db/config';
 
 import { authorization } from './auth/authorization.middleware';
 
-import userRouter from './routers/user.router';
+import usersRouter from './routers/users.router';
 import messagesRouter from './routers/messages.router';
 import friendsRouter from './routers/friends.router';
 
@@ -24,15 +24,18 @@ import friendsRouter from './routers/friends.router';
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use('/user', userRouter);
+    app.use('/user', usersRouter);
 
     app.use(authorization);
 
     app.use('/friends', friendsRouter);
     app.use('/messages', messagesRouter);
 
-    app.use('*', async (req, res, next) => {
-        res.status(404).send('Not Found');
+    app.use((err, req, res, next) => {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(404).send('Not Found');
     });
 
     app.listen(env.APP_PORT, () => {
