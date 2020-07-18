@@ -1,36 +1,58 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import Ajv from 'ajv';
+
+import * as schemas from '../../common/validation/users.schema';
 
 import './loginForm.scss';
 
+
 export const LoginForm = ({ handleLogin }) => {
-    const [ username, changeUsername ] = useState('');
-    const [ password, changePassword ] = useState('');
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
+
     const [ isDisabledSubmit, changeDisableStatus ] = useState(true);
 
-    const validateUsernameField = ( value: string ) => {
+    const validateFunction = new Ajv({ allErrors: true }).compile(schemas.loginUserSchema);
 
+    const validateFields = () => {
+        // @ts-ignore
+        const username = usernameRef.current.value;
+        // @ts-ignore
+        const password = passwordRef.current.value;
+
+        const isValid = validateFunction([{ username, password }]);
+
+        if (isValid)
+            changeDisableStatus(false);
+        else
+            changeDisableStatus(true);
     };
+
+    useEffect(() => {
+        validateFields();
+    }, []);
 
     return(
         <div className="login-form">
             <h1>Login</h1>
             <input type="text"
                    className="login-form__input"
-                   onChange={({ target: { value } }) => changeUsername(value)}
-                   onBlur={ ({ target: { value } }) => validateUsernameField(value)}
+                   ref={usernameRef}
+                   onBlur={validateFields}
                    placeholder="Username"
                    maxLength={30}
             />
             <input type="password"
                    className="login-form__input"
-                   onChange={({ target: { value } }) => changePassword(value)}
+                   ref={passwordRef}
+                   onBlur={validateFields}
                    placeholder="Password"
                    maxLength={30}
             />
             <button
                 {...isDisabledSubmit ? 'disabled' : ''}
                 className={`login-form__sign-in ${isDisabledSubmit ? 'login-form__sign-in--disabled' : ''}`}
-                onClick={() => handleLogin(username, password)}>
+                onClick={() => handleLogin('', '')}>
                 Sign in
             </button>
 
