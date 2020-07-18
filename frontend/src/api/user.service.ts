@@ -6,15 +6,23 @@ import { baseUrl, baseHeaders } from "../constants/urls";
 export default class UserService {
     private static userUrl: string = `${baseUrl}/user`;
 
-    public static async login( token: string ){
+    public static login( username: string, password: string ){
         const loginUrl = `${UserService.userUrl}/login`;
 
-        const response = await axios.get(loginUrl, {
-            headers: {
-                ...baseHeaders
+        return Observable.create( async observer => {
+            try{
+                const response = await axios.post(loginUrl,{ username, password }, {
+                    headers: {
+                        ...baseHeaders
+                    }
+                });
+
+                observer.next(response);
+                observer.complete();
+            }
+            catch (error) {
+                observer.error(error);
             }
         });
-
-        console.log(response);
     }
 }

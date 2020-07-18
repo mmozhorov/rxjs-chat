@@ -7,8 +7,8 @@ import './loginForm.scss';
 
 
 export const LoginForm = ({ handleLogin }) => {
-    const usernameRef = useRef(null);
-    const passwordRef = useRef(null);
+    const usernameRef: any = useRef<HTMLInputElement>(null);
+    const passwordRef: any = useRef<HTMLInputElement>(null);
 
     const [ isDisabledSubmit, changeDisableStatus ] = useState(true);
 
@@ -52,7 +52,7 @@ export const LoginForm = ({ handleLogin }) => {
             <button
                 {...isDisabledSubmit ? 'disabled' : ''}
                 className={`login-form__sign-in ${isDisabledSubmit ? 'login-form__sign-in--disabled' : ''}`}
-                onClick={() => handleLogin('', '')}>
+                onClick={() => handleLogin(usernameRef.current.value, passwordRef.current.value)}>
                 Sign in
             </button>
 
