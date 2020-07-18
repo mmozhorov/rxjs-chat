@@ -49,7 +49,7 @@ export const LoginForm = ({ handleLogin }) => {
                    maxLength={30}
             />
             <button
-                {...isDisabledSubmit ? 'disabled' : ''}
+                disabled={ isDisabledSubmit }
                 className={`login-form__sign-in ${isDisabledSubmit ? 'login-form__sign-in--disabled' : ''}`}
                 onClick={() => handleLogin(usernameRef.current.value, passwordRef.current.value)}>
                 Sign in

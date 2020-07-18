@@ -6,9 +6,8 @@ import { LoginForm } from "../components/Login";
 
 import UserService from "../api/user.service";
 
-export default class LoginPage extends React.Component {
-
-    handleLogin = ( username, password ) => {
+const LoginPage = () => {
+    const handleLogin = ( username, password ) => {
         const sub$ = UserService.login( username, password )
             .pipe( map( ( response: any ) => response.data ) )
             .subscribe(
@@ -18,9 +17,7 @@ export default class LoginPage extends React.Component {
         )
     };
 
-    render(){
-        return(
-            <LoginForm handleLogin={this.handleLogin} />
-        );
-    }
+    return( <LoginForm handleLogin={handleLogin} /> );
 };
+
+export default LoginPage;
