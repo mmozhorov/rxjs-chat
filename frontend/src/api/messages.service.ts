@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
-import {baseHeaders, baseUrl} from "../constants/urls";
+import { baseHeaders, baseUrl } from "../constants/urls";
 
 export default class MessagesService {
     private static messagesUrl: string = `${baseUrl}/messages`;
@@ -13,17 +13,20 @@ export default class MessagesService {
         return ajax.getJSON(urlWithParams);
     };
 
-    public static postFriendMessage = ( friend, message ) =>
-        Observable.create( ( observer ) => {
-            axios.post(MessagesService.messagesUrl, { friend, message }, {
-                headers: {
-                    ...baseHeaders
-                }
-            })
-                .then( response => {
-                    observer.next(response);
-                    observer.complete();
-                })
-                .catch( observer.error )
+    public static postFriendMessage =  ( friend, message ) =>
+        Observable.create( async ( observer ) => {
+            try {
+                const response = await axios.post(MessagesService.messagesUrl, { friend, message }, {
+                    headers: {
+                        ...baseHeaders
+                    }
+                });
+
+                observer.next(response);
+                observer.complete();
+            }
+            catch (error) {
+                observer.error(error);
+            }
         });
 }

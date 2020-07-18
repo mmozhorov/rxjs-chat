@@ -1,21 +1,19 @@
 import React from 'react';
-
+import { toast } from 'react-toastify';
 import { map } from "rxjs/operators";
 
-import UserService from "../api/user.service";
-
 import { LoginForm } from "../components/Login";
+
+import UserService from "../api/user.service";
 
 export default class LoginPage extends React.Component {
 
     handleLogin = ( username, password ) => {
         const sub$ = UserService.login( username, password )
-            .pipe(
-                map(( response: any ) => response.data )
-            )
+            .pipe( map( ( response: any ) => response.data ) )
             .subscribe(
-            console.log,
-            console.error,
+                ( token ) => console.log({ token }),
+                ( error ) => toast.error("Incorrect username or password"),
             () => sub$.unsubscribe()
         )
     };

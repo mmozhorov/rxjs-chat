@@ -5,7 +5,6 @@ import * as schemas from '../../common/validation/users.schema';
 
 import './loginForm.scss';
 
-
 export const LoginForm = ({ handleLogin }) => {
     const usernameRef: any = useRef<HTMLInputElement>(null);
     const passwordRef: any = useRef<HTMLInputElement>(null);

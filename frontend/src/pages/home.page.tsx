@@ -17,13 +17,11 @@ export default class HomePage extends React.Component<any, IHomePage>{
 
     componentDidMount(): void {
         const userToken = localStorage.getItem('userToken') || '';
-        const sub$ = FriendsService.getAllFriends(userToken);
-
-        sub$.subscribe(
-            ( data: any ) => {
-                console.log(data)
-            },
-            console.error,
+        const sub$ = FriendsService.getAllFriends(userToken)
+            .pipe( ( response: any ) => response.data )
+            .subscribe(
+            ( data ) => { console.log(data) },
+                ( error ) => {},
             () => sub$.unsubscribe()
         )
     }

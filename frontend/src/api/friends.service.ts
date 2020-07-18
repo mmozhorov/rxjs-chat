@@ -1,11 +1,7 @@
-import { ajax } from 'rxjs/ajax';
-import { map, catchError } from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
+import axios from 'axios';
+import { Observable } from 'rxjs';
 
-import {baseHeaders, baseUrl} from "../constants/urls";
-import axios from "axios";
-
-
+import { baseUrl, baseHeaders } from "../constants/urls";
 
 export default class FriendsService {
     private static friendsUrl: string = `${baseUrl}/friends`;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,6 +14,8 @@ import HomePage from './pages/home.page';
 import LoginPage from './pages/login.page';
 
 import { Header } from "./components/Header";
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () =>
     <Provider store={ createStore( reducer ) }>
@@ -28,5 +31,16 @@ export const App = () =>
                     </Route>
                 </Switch>
             </div>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </Router>
     </Provider>;
