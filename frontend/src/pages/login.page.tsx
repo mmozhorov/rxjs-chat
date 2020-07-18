@@ -8,6 +8,8 @@ import { LoginForm } from "../components/Login";
 const ajv = new Ajv({ allErrors: true });
 
 export default class LoginPage extends React.Component{
+    private validateFunction: Ajv.ValidateFunction;
+
     handleLogin = ( username, password ) => {
 
     };

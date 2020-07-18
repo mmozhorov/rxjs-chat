@@ -33,6 +33,15 @@
     &:active{
       background-color: #e0e0e0;
     }
+
+    &--disabled{
+      background-color: #fdcaca;
+      cursor: not-allowed;
+
+      &:active{
+        background-color: #ff8585;
+      }
+    }
   }
 
   &__auth-link{
